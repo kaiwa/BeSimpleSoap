@@ -74,6 +74,7 @@ class SoapWebServiceController extends ContainerAware
 
         $response = $this->getResponse();
         $response->setContent(ob_get_clean());
+        $response->headers->set('Content-Type', $this->soapRequest->getContentType());
 
         // The Symfony 2.0 Response::setContent() does not return the Response instance
         return $response;
